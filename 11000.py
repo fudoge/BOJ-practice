@@ -11,7 +11,7 @@ for i in range(0, len(arr), 1):
         if j >= len(arr):
             continue
         if arr[i][1] - arr[j][0] == 0:
-            arr[i][1] = arr[j][1]a
+            arr[i][1] = arr[j][1]
             del arr[j]
             continue
 

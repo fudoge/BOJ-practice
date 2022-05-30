@@ -1,3 +1,4 @@
+print("hello")
 arr =[]
 n = int(input())
 for i in range(n):
