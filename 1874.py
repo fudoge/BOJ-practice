@@ -1,25 +1,29 @@
-n = int(input())
-cnt = 1
+cnt = 0
 stack = []
 arr = []
-tmp = 1
-for i in range(n):
+tmp = True
+
+n = int(input())
+for _ in range(n):
     num = int(input())
-    while cnt <= num:
+    while cnt < num:
+        cnt += 1
         stack.append(cnt)
         arr.append("+")
-        cnt += 1
     
-    if num == cnt:
+    if num == stack[-1]:
         stack.pop()
         arr.append("-")
-        
     else :
-        tmp == 0
-        break
+        tmp = False
+        print("NO")
+        exit(0)
         
-if tmp == 0:
-    print("No")
-    
-for i in arr:
-    print(i)
+print(tmp)
+        
+if tmp == False:
+    print("NO")
+else:
+    print("/n")
+    for i in arr:
+        print(i)
