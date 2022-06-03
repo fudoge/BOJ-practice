@@ -1,7 +1,9 @@
+import sys
+
 arr =[]
-n = int(input())
+n = int(sys.stdin.readline())
 for i in range(n):
-    a, b = map(int, input().split(" "))
+    a, b = map(int, sys.stdin.readline().split(" "))
     arr.append([a, b])
 
 arr.sort()
