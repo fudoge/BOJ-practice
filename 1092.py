@@ -1,3 +1,4 @@
+"""2022.07.12 해결됨"""
 import sys
 
 n = int(sys.stdin.readline().rstrip())
