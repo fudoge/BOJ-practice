@@ -32,7 +32,7 @@ class SimplyLinkedList():
 		return currentNode.data
     
 	def append(self, data): #tail에 추가, 빈 리스트일경우, head에.
-		if self.head = None:
+		if self.head == None:
 			self.head = Node(data)    
 		else:
 			tail = self.getTail()
@@ -80,7 +80,7 @@ class SimplyLinkedList():
 		headNode.next = None
         
 	def popAt(self, index):	#특정 인덱스 pop
-		currentNode = self.headNode
+		currentNode = self.head
 		for i in range(index):
 			prevNode = currentNode
 			currentNode = currentNode.next
@@ -109,19 +109,20 @@ class SimplyLinkedList():
 		tail = self.getTail()
 		self.link(tail, nextList.head)
         
-node1 = Node(7)
-node2 = Node(3)
-node3 = Node(9)
+node1 = Node(7)	#7을 가진 노드 생성
+node2 = Node(3) #3을 가진 노드 생성
 
-List1 = SimplyLinkedList()
-List2 = SimplyLinkedList()
-List1.head = node1
-List1.link(node1, node2)
-List1.append(78)
-List1.insertBeforeThisNumber(80, 78)
-List2.head = node3
-List2.appendhead(690)
-List1.listMerge(List2)
-List1.printList()
-print(List1.getNum(2))
-print(List1.getIndex(80))
+List1 = SimplyLinkedList() #리스트1 생성
+List2 = SimplyLinkedList() #리스트2 생성
+
+List1.head = node1   	    #리스트1의 head를 node1로 설정
+List1.link(node1, node2)	#node1의 다음 노드를 node2로 지정
+List2.append(4)				#리스트2에 4를 가진 노드 추가
+List1.appendhead(780)		#리스트1의 head를 780을 가진 노드로 설정
+List2.insertAfterThisNumber(60, 4) #리스트2의 4 뒤에 60 삽입
+List1.insertAt(68, 1) #List1의 1인덱스자리에 68을 가진 노드 넣기(기존 값들은 밀려남)
+List2.append(200)	  #리스트2의 맨 끝에 200을 가진 노드 추가
+List2.popAt(1)		  #리스트2의 1인덱스자리의 노드(60을 가진 노드) 제거
+List1.listMerge(List2)#리스트1 - 리스트2 합치기(연결)
+
+List1.printList()	  #리스트1 출력
