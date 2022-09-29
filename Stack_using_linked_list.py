@@ -20,10 +20,14 @@ class Stack():
             self.head = Node(data, self.head)
         
     def pop():
-        headNode = self.head
-        self.head = self.head.next
-        headNode.next = None
-        return headNode
-    
+        if self.isEmpty():
+            print("stack is Empty!")
+        else:
+            headNode = self.head
+        	self.head = self.head.next
+        	headNode.next = None
+        	return headNode
+        
     def top():
         return self.head
+    
