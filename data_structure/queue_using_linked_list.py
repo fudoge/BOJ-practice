@@ -36,7 +36,7 @@ class queue():	#스택 선언
             print("Stack is Empty!")
         else:
         	return self.head.data
-    def rear(self):	#큐의 끝값 출력
+    def rear(self):		#큐의 끝값 출력
         if self.isEmpty():
             print("Stack is Empty!")
         else:
@@ -53,7 +53,6 @@ q.enqueue(2)
 print(q.isEmpty())
 print(q.front())
 print(q.dequeue())
-print(q.rear())
 print(q.dequeue())
 print(q.dequeue())
 print(q.dequeue())
