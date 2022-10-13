@@ -17,8 +17,12 @@ class queue():
         if self.isEmpty():
             print("Stack is Empty!")
         else:
+            return self.arr[-1]
+    def front(self):
+        if self.isEmpty():
+            print("Stack is Empty!")
+        else:
             return self.arr[0]
-
 q = queue()
 print(q.isEmpty())
 q.enqueue(3)

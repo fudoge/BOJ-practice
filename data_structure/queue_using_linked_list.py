@@ -31,11 +31,16 @@ class queue():	#스택 선언
             headNode.next = None
             return data
 	
-    def rear(self):	#큐의 head값 출력
+    def front(self):	#큐의 head값 출력
         if self.isEmpty():
             print("Stack is Empty!")
         else:
         	return self.head.data
+    def rear(self):	#큐의 끝값 출력
+        if self.isEmpty():
+            print("Stack is Empty!")
+        else:
+        	return self.tail.data
         
         
 q = queue()
@@ -46,7 +51,9 @@ q.enqueue(1)
 q.enqueue(8)
 q.enqueue(2)
 print(q.isEmpty())
+print(q.front())
 print(q.dequeue())
+print(q.rear())
 print(q.dequeue())
 print(q.dequeue())
 print(q.dequeue())

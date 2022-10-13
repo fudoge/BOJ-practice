@@ -1,10 +1,6 @@
 class stack():		#스택 선언
     def __init__(self):
         self.arr = []
-    
-    def _len_(self):
-        return len(self.arr)
-    
     def isEmpty(self):	#스택이 비어있는지 확인
         if len(self.arr) == 0:
             return True
