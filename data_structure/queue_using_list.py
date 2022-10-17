@@ -13,19 +13,19 @@ class queue():	#큐 선언
         
     def dequeue(self):	#큐의 맨 앞 데이터 pop
         if self.isEmpty():
-            print("Stack is Empty!")
+            print("Queue is Empty!")
         else:
             return self.arr.pop(0)
         
     def rear(self):	#큐의 맨 뒤 데이터 반환(pop 하지는 않음)
         if self.isEmpty():
-            print("Stack is Empty!")
+            print("Queue is Empty!")
         else:
             return self.arr[-1]
         
     def front(self):	#큐의 맨 앞 데이터 반환(pop하지는 않음)
         if self.isEmpty():
-            print("Stack is Empty!")
+            print("Queue is Empty!")
         else:
             return self.arr[0]
 q = queue()
@@ -39,6 +39,7 @@ print(q.front())
 print(q.isEmpty())
 print(q.dequeue())
 print(q.dequeue())
+print(q.front())
 print(q.dequeue())
 print(q.dequeue())
 print(q.rear())

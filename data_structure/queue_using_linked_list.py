@@ -2,12 +2,12 @@ class Node():	#노드 선언
     def __init__(self, data, next = None):
         self.data = data
         self.next = next
-class queue():	#스택 선언
+class queue():	#큐 선언
     def __init__(self):
         self.head = None
         self.tail = None
         
-    def isEmpty(self):	#스택이 비어있는지
+    def isEmpty(self):	#큐가 비어있는지
         if self.head == None and self.tail == None:
             return True
         else:
@@ -21,9 +21,9 @@ class queue():	#스택 선언
             self.tail.next = Node(data)
             self.tail = self.tail.next
             
-    def dequeue(self):	#스택의 head제거
+    def dequeue(self):	#큐의 head제거
         if self.isEmpty():
-            print("stack is Empty!")
+            print("Queue is Empty!")
         else:
             data = self.head.data
             headNode = self.head
@@ -33,12 +33,12 @@ class queue():	#스택 선언
 	
     def front(self):	#큐의 head값 출력
         if self.isEmpty():
-            print("Stack is Empty!")
+            print("Queue is Empty!")
         else:
         	return self.head.data
     def rear(self):		#큐의 끝값 출력
         if self.isEmpty():
-            print("Stack is Empty!")
+            print("Queue is Empty!")
         else:
         	return self.tail.data
         
