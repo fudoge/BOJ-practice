@@ -6,15 +6,19 @@ class queue():	#큐 선언
         self.last = 0
         
     def isEmpty(self):	#큐가 비어있는지 확인
-        if self.first >= self.size:
+        if self.first == self.last and self.arr[self.first] == None:
             return True
-        if self.arr[self.first] == None:
+        else:
+            return False
+
+    def isFull(self):	#큐가 꽉 차있는지 확인
+        if self.first == self.last and self.arr[self.first] != None:
             return True
         else:
             return False
         
     def enqueue(self, data):	#큐에 data 삽입
-        if self.last >= self.size or self.arr[self.last] != None:
+        if self.isFull():
             print("No space to enqueue!")
             return None
         self.arr[self.last] = data
@@ -31,17 +35,18 @@ class queue():	#큐 선언
         
     def rear(self):	#큐의 맨 뒤 데이터 반환(pop하지는 않음)
         if self.isEmpty():
-            print("Queue is Empty!")
+            return("Queue is Empty!")
         else:
             return self.arr[self.last]
         
     def front(self):	#큐의 맨 앞 데이터 반환(pop하지는 않음)
         if self.isEmpty():
-            print("Queue is Empty!")
+            return("Queue is Empty!")
         else:
             return self.arr[self.first]
         
 q = queue(4)
+print(q.arr)
 print(q.isEmpty())
 q.enqueue(3)
 print(q.arr)
@@ -51,6 +56,7 @@ q.enqueue(9)
 print(q.arr)
 q.enqueue(1)
 print(q.arr)
+print(q.isFull())
 q.enqueue(2)
 print(q.arr)
 print(q.front(), "1")
@@ -61,8 +67,9 @@ print(q.front(), "5")
 print(q.dequeue(), "6")
 print(q.dequeue(), "7")
 print(q.dequeue(), "8")
-print(q.first)
-print(q.last)
+print(q.arr)
+print(q.front(), "9")
+print(q.rear(), "10")
 q.enqueue(4)
 print(q.arr)
 print(q.dequeue())

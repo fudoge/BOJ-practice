@@ -13,9 +13,12 @@ class queue():	#큐 선언
         else:
             return False
         
+    def isFull(self):	#큐가 꽉 차있는지 확인
+        return self.last == self.size
+        
     def enqueue(self, data):	#큐에 data 삽입
-        if self.last >= self.size:
-            print("No space to enqueue!")
+        if self.isFull() is True:
+            print("Queue is Full!")
             return None
         self.arr[self.last] = data
         self.last = self.last + 1
@@ -44,9 +47,13 @@ class queue():	#큐 선언
 q = queue(4)
 print(q.isEmpty())
 q.enqueue(3)
+print(q.arr)
 q.enqueue(7)
+print(q.arr)
 q.enqueue(9)
 q.enqueue(1)
+print(q.arr)
+print(q.isFull(), "0")
 q.enqueue(2)
 print(q.front(), "1")
 print(q.isEmpty(), "2")
