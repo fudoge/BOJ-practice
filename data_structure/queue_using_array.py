@@ -44,23 +44,23 @@ class queue():	#큐 선언
         else:
             return self.arr[self.first]
         
-q = queue(4)
+q = queue(4)	#[None, None, None, None]
+
+print(q.isEmpty())	#True
+
+q.enqueue(4)	#[4, None, None, None]
+q.enqueue(7)	#[4, 7, None, None]
+q.enqueue(2)	#[4, 7, 2, None]
+q.enqueue(3)	#[4, 7, 2, 3]
+
+print(q.isFull())	#True
+q.enqueue(9)	#더 넣을 공간이 없음
+
+print(q.dequeue())	#[None, 7, 2, 3]
+print(q.dequeue())	#[None, None, 2, 3]
+print(q.dequeue())	#[None, None, None, 3]
+print(q.dequeue())	#[None, None, None, None]
 print(q.isEmpty())
-q.enqueue(3)
-print(q.arr)
-q.enqueue(7)
-print(q.arr)
-q.enqueue(9)
-q.enqueue(1)
-print(q.arr)
-print(q.isFull(), "0")
-q.enqueue(2)
-print(q.front(), "1")
-print(q.isEmpty(), "2")
-print(q.dequeue(), "3")
-print(q.dequeue(), "4")
-print(q.front(), "5")
-print(q.dequeue(), "6")
-print(q.dequeue(), "7")
-print(q.dequeue(), "8")
-q.enqueue(4)
+print(q.dequeue())	#큐는 비어있음
+
+q.enqueue(8)	#분명 비어있는 큐인데.. 꽉 차있다??

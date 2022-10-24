@@ -1,4 +1,4 @@
-class queue():	#큐 선언
+class circular_queue():	#큐 선언
     def __init__(self, size):
         self.size = size
         self.arr = [None] * self.size
@@ -19,7 +19,7 @@ class queue():	#큐 선언
         
     def enqueue(self, data):	#큐에 data 삽입
         if self.isFull():
-            print("No space to enqueue!")
+            print("Queue is Full!")
             return None
         self.arr[self.last] = data
         self.last = (self.last + 1)% self.size
@@ -45,41 +45,30 @@ class queue():	#큐 선언
         else:
             return self.arr[self.first]
         
-q = queue(4)
-print(q.arr)
-print(q.isEmpty())
-q.enqueue(3)
-print(q.arr)
-q.enqueue(7)
-print(q.arr)
-q.enqueue(9)
-print(q.arr)
-q.enqueue(1)
-print(q.arr)
-print(q.isFull())
-q.enqueue(2)
-print(q.arr)
-print(q.front(), "1")
-print(q.isEmpty(), "2")
-print(q.dequeue(), "3")
-print(q.dequeue(), "4")
-print(q.front(), "5")
-print(q.dequeue(), "6")
-print(q.dequeue(), "7")
-print(q.dequeue(), "8")
-print(q.arr)
-print(q.front(), "9")
-print(q.rear(), "10")
-q.enqueue(4)
-print(q.arr)
-print(q.dequeue())
-q.enqueue(9)
-print(q.arr)
-q.enqueue(1)
-print(q.arr)
-q.enqueue(2)
-print(q.arr)
-print(q.dequeue())
-print(q.dequeue())
-q.enqueue(7)
-print(q.arr)
+q = circular_queue(4)
+
+print(q.isEmpty())	#True
+
+q.enqueue(4)	#[4, None, None, None]
+q.enqueue(7)	#[4, 7, None, None]
+q.enqueue(2)	#[4, 7, 2, None]
+q.enqueue(3)	#[4, 7, 2, 3]
+
+print(q.isFull())	#True
+q.enqueue(9)	#더 넣을 공간이 없음
+
+print(q.dequeue())	#[None, 7, 2, 3]
+print(q.dequeue())	#[None, None, 2, 3]
+print(q.dequeue())	#[None, None, None, 3]
+print(q.dequeue())	#[None, None, None, None]	
+print(q.isEmpty())	#True
+print(q.dequeue())	#더 뺄게 없음
+
+q.enqueue(8)		#[8, None, None, None]
+print(q.dequeue())	#[None, None, None, None]
+q.enqueue(9)		#[None, 9, None, None]
+q.enqueue(1)		#[None, 9, 1, None]
+q.enqueue(6)		#[None, 9, 1, 6]
+q.enqueue(4)		#[4, 9, 1, 6]
+print(q.arr)		#[4, 9, 1, 6]
+print(q.front())	#9
