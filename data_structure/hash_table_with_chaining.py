@@ -25,7 +25,7 @@ class hashTable():
                 if self.table[idx][i][0] == key:
                     self.table[idx].pop(i)
                     return
-            print("No data", key ,"!")	#탐색하고 나서도 없으면 역시 없다는 뜻이니 없다고 출력한다.
+            print("No data", key ,"!")	#탐색하고 나서 없을때도 없다고 출력한다.
             
     def _printAll(self):	#해시 함수 전체 출력
         for i in range(self.size):
