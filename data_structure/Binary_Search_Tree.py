@@ -60,21 +60,31 @@ class Tree():
         print()
                 
         if currentNode.left != None and currentNode.right != None:
-            successor = currentNode.right
-            while successor.left != None:
-                predecessor = successor
-                successor = successor.left
-            print(successor.key)
-            predecessor.left = None
-            successor.left = currentNode.left
-            successor.right = currentNode.right
-            if parentNode == None:
-                self.root = successor
+            print("서브트리가 두 개이군!")
+            minNode = currentNode.right
+            parentOfmin = currentNode
+            isright = True    #바로 옆의 것인지(while 문을 건너뛰는지)
+            while minNode.left != None:
+                parentOfmin = minNode
+                minNode = minNode.left
+                isright = False
+                print("민노드는, 패런트 ", minNode.key,",", parentOfmin.key)
+            print("민노드는, 패런트 ", minNode.key,",", parentOfmin.key)
+            currentNode.key = minNode.key
+            if isright is True:
+                parentOfmin.right = None
+            else:
+                parentOfmin.left = None
+            
+                
         elif currentNode.left != None:
+            print("서브트리가 한 개이군!")
             parentNode.right = currentNode.left
         elif currentNode.right != None:
+            print("서브트리가 한 개이군!")
             parentNode.left = currentNode.right
         else:
+            print("서브트리가 없군!")
             if parentNode.key > key:
                 parentNode.left = None
             else:
@@ -90,18 +100,21 @@ class Tree():
 a = Node(10)
 BST = Tree()
 BST.root = a
+BST._insert(12)
 BST._insert(13)
 BST._insert(11)
 BST._insert(7)
+BST._insert(9)
 BST._insert(8)
 BST._insert(5)
 
 BST.inorder_traversal(BST.root)
 print()
 
-BST._delete(10)
+BST._delete(11)
 
 BST.inorder_traversal(BST.root)
 
+print("이 트리의 루트는: ",BST.root.key)
 print(BST.root.left.key)
 print(BST.root.right.key)
