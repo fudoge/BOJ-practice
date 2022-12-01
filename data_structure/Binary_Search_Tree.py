@@ -42,7 +42,7 @@ class Tree():
             
     
     
-    def _delete(self, key):
+    def _delete_beta(self, key):
         parentNode = None
         currentNode = self.root
         print("탐색 중: ", end="")
@@ -87,9 +87,54 @@ class Tree():
             else:
                 parentNode.right = None
                 
-    def _delete2(self, key):
-
-        
+    def _delete(self, key):    #삭제
+        node = self.root       #루트부터 시작
+        parent = None          #없앨 부모 노드를 담을 변수 생성
+        while True:            #무한 루프
+            if node == None:   #노드가 없으면 중지
+                return False
+            if node.key == key:#노드의 key값이 일치하면, 루프 탈출
+                break
+            else:              #같지 않으면..
+                parent = node 
+                if key < node.key:#찾으려는 값이 현 노드보다 작으면, 왼쪽으로 이동해서 반복
+                    node = node.left
+                else:            #크면, 오른쪽으로 이동해서 반복
+                    node = node.right
+                    
+        if node.left != None and node.right != None:#서브트리가 두 개일 경우, 자리를 대신할 노드로 오른쪽 서브트리의 가장 작은 자손을 올린다.
+            print("서브트리가 두 개!")
+            minNode = node.right            #오른쪽 서브트리의 루트부터 시작
+            parentOfmin = node              #대신할 노드의 부모노드 선언
+            isright = True    #바로 오른쪽 서브트리의 루트가 대신하는지(while 문을 건너뛰는지)
+            while minNode.left != None:     #단말 노드까지 왼쪽으로만 내려가기
+                parentOfmin = minNode
+                minNode = minNode.left
+                isright = False
+            node.key = minNode.key          #찾은 노드(오른쪽 서브트리의 가장 작은 자손)가 자리를 대신함
+            if isright is True:             #오른쪽 서브트리의 루트가 대신한다면:
+                parentOfmin.right = None
+            else:                           #만약 더 내려간다면:
+                parentOfmin.left = None
+            
+        elif node.left != None:            #서브트리가 왼쪽에만 있다면
+            print("서브트리가 한 개!")
+            if node.key > parent.key:      #삭제하려는 노드가 부모 노드보다 크면, 부모의 오른쪽을 왼쪽 서브트리의 루트로 연결
+                parent.right = node.left
+            else:
+                parent.left = node.left    #삭제하려는 노드가 부모 노드보다 작으면, 부모의 왼쪽을 왼쪽 서브트리의 루트로 연결
+        elif node.right != None:           #서브트리가 오른쪽에 있다면
+            print("서브트리가 한 개!")
+            if node.key > parent.key:      #삭제하려는 노드가 부모 노드보다 크면, 부모의 오른쪽을 오른쪽 서브트리의 루트로 연결
+                parent.right = node.right
+            else:
+                parent.left = node.right   #삭제하려는 노드가 부모 노드보다 작으면, 부모의 왼쪽을 오른쪽 서브트리의 루트로 연결
+        else:        
+            print("서브트리 없음!")           #서브트리가 없을 때
+            if parent.key > key:           #부모노드가 더 크면, 왼쪽을 없애고, 작으면 오른쪽을 없앰
+                parent.left = None
+            else:
+                parent.right = None
             
     def inorder_traversal(self, node):    #중위 순회
         if node.left:
@@ -98,9 +143,8 @@ class Tree():
         if node.right:
             self.inorder_traversal(node.right)
 
-a = Node(10)
 BST = Tree()
-BST.root = a
+BST._insert(10)
 BST._insert(12)
 BST._insert(13)
 BST._insert(11)
@@ -114,10 +158,10 @@ print(BST._search(BST.root, 5))
 BST.inorder_traversal(BST.root)
 print()
 
-BST._delete2(10)
+BST._delete(5)
 
 BST.inorder_traversal(BST.root)
 
 print("이 트리의 루트는: ",BST.root.key)
-print(BST.root.left.key)
-print(BST.root.right.key)
+print("루트의 왼쪽 서브 트리의 루트는: ", BST.root.left.key)
+print("루트의 오른쪽 서브 트리의 루트는: ", BST.root.right.key)
